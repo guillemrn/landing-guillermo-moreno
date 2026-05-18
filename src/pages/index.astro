@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
 <html lang="es" class="scroll-smooth">
@@ -8,123 +8,492 @@ import '../styles/global.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Guillermo Moreno | Product Design Studio</title>
-		<meta name="description" content="Diseño y programo experiencias e infraestructura digital de alto rendimiento enfocadas en convertir visitas en clientes." />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-		
+		<title>Guillermo Moreno | Landing Pages de Alta Conversión</title>
+		<meta
+			name="description"
+			content="Diseño y programo experiencias e infraestructura digital de alto rendimiento enfocadas en convertir visitas en clientes."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Theme toggle script -->
 		<script is:inline>
 			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
 				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark";
 				}
-				return 'light';
+				return "light";
 			})();
-		
-			if (theme === 'dark') {
-				document.documentElement.classList.add('dark');
+
+			if (theme === "dark") {
+				document.documentElement.classList.add("dark");
 			} else {
-				document.documentElement.classList.remove('dark');
+				document.documentElement.classList.remove("dark");
 			}
-			window.localStorage.setItem('theme', theme);
+			window.localStorage.setItem("theme", theme);
 		</script>
 	</head>
-	<body class="relative text-slate-900 bg-slate-50 dark:text-white dark:bg-slate-950 selection:bg-purple-200 dark:selection:bg-purple-900 selection:text-purple-900 dark:selection:text-white overflow-x-hidden transition-colors duration-300">
-		
+	<body
+		class="relative text-slate-900 bg-slate-50 dark:text-white dark:bg-slate-950 selection:bg-purple-200 dark:selection:bg-purple-900 selection:text-purple-900 dark:selection:text-white overflow-x-hidden transition-colors duration-300"
+	>
 		<!-- Background Blobs -->
 		<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-			<div class="blob blob-light-purple dark:blob-purple w-[500px] h-[500px] -top-[200px] -left-[100px]"></div>
-			<div class="blob blob-light-fuchsia dark:blob-fuchsia w-[600px] h-[600px] top-[40%] -right-[200px]"></div>
-			<div class="blob blob-light-purple dark:blob-purple w-[800px] h-[400px] top-[70%] left-[10%] opacity-20"></div>
+			<div
+				class="blob blob-light-purple dark:blob-purple w-[500px] h-[500px] -top-[200px] -left-[100px]"
+			>
+			</div>
+			<div
+				class="blob blob-light-fuchsia dark:blob-fuchsia w-[600px] h-[600px] top-[40%] -right-[200px]"
+			>
+			</div>
+			<div
+				class="blob blob-light-purple dark:blob-purple w-[800px] h-[400px] top-[70%] left-[10%] opacity-20"
+			>
+			</div>
 		</div>
 
-		<!-- Navigation (Theme Toggle) -->
-		<nav class="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-			<div class="flex items-center gap-2">
-				<div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center font-serif font-bold text-sm ring-1 ring-purple-200 dark:ring-purple-500/30">
-					GM
+		<!-- Full-screen Overlay Menu -->
+		<div
+			id="overlayMenu"
+			class="fixed inset-0 z-40 bg-slate-50/98 dark:bg-slate-950/98 backdrop-blur-2xl flex items-center translate-y-[-100%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden"
+		>
+			<div
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+			>
+				<!-- Left side: Giant navigation links -->
+				<div class="space-y-6 md:space-y-8 font-sans">
+					<nav class="flex flex-col gap-4 sm:gap-6">
+						{
+							[
+								{ num: "01", text: "INICIO", href: "#" },
+								{
+									num: "02",
+									text: "SERVICIOS",
+									href: "#servicios",
+								},
+								{
+									num: "03",
+									text: "PROCESO",
+									href: "#proceso",
+								},
+								{
+									num: "04",
+									text: "TRABAJA CONMIGO",
+									href: "#contacto",
+								},
+							].map((link) => (
+								<a
+									href={link.href}
+									class="menu-link group flex items-baseline gap-4 md:gap-6 text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-slate-800 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
+								>
+									<span class="text-lg sm:text-2xl font-serif text-slate-400 dark:text-slate-600 group-hover:text-purple-400 dark:group-hover:text-purple-500 font-medium">
+										{link.num}.
+									</span>
+									<span class="font-sans leading-none uppercase">
+										{link.text}
+									</span>
+								</a>
+							))
+						}
+					</nav>
 				</div>
-				<span class="font-medium text-sm tracking-wide dark:text-slate-200">Guillermo Moreno</span>
+
+				<!-- Right side: Contact block (Only desktop) -->
+				<div
+					class="hidden md:flex flex-col justify-center space-y-8 border-l border-slate-200 dark:border-white/5 pl-12 h-96"
+				>
+					<div class="space-y-2">
+						<span
+							class="text-xs font-bold tracking-widest text-slate-400 dark:text-slate-600 uppercase"
+							>¿Tienes un proyecto en mente?</span
+						>
+						<a
+							href="mailto:hello@guillermomoreno.design"
+							class="block text-2xl font-semibold text-slate-800 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
+						>
+							hello@guillermomoreno.design
+						</a>
+					</div>
+
+					<div class="flex items-center gap-3">
+						<span class="relative flex h-3 w-3">
+							<span
+								class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+							></span>
+							<span
+								class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"
+							></span>
+						</span>
+						<span
+							class="text-sm font-medium text-slate-600 dark:text-slate-400"
+						>
+							Disponible para nuevos proyectos Q2 2026
+						</span>
+					</div>
+				</div>
 			</div>
-			
-			<button id="themeToggle" class="p-2 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all cursor-pointer" aria-label="Alternar tema">
-				<svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-				<svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-			</button>
-		</nav>
+		</div>
+
+		<!-- Navigation Header (Sticky + Backdrop Blur) -->
+		<header
+			class="sticky top-0 z-50 w-full border-b border-slate-200/50 dark:border-white/5 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-300"
+		>
+			<nav
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center relative"
+			>
+				<!-- Left: Hamburger Menu Trigger (Active both Mobile & Desktop) -->
+				<button
+					id="menuToggle"
+					class="p-2 focus:outline-none flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-full border border-slate-200/60 dark:border-white/10 bg-white/40 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-800 transition-all cursor-pointer z-50"
+					aria-label="Toggle menú"
+				>
+					<span
+						id="menuLine1"
+						class="w-5 h-[2px] bg-slate-800 dark:bg-slate-200 transition-all duration-300"
+					></span>
+					<span
+						id="menuLine2"
+						class="w-5 h-[2px] bg-slate-800 dark:bg-slate-200 transition-all duration-300"
+					></span>
+				</button>
+
+				<!-- Right: Theme Toggle & Secondary CTA -->
+				<div class="flex items-center gap-3 sm:gap-4 z-50">
+					<button
+						id="themeToggle"
+						class="p-2 rounded-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 transition-all cursor-pointer"
+						aria-label="Alternar tema"
+					>
+						<svg
+							id="sunIcon"
+							class="w-5 h-5 hidden dark:block"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+							></path></svg
+						>
+						<svg
+							id="moonIcon"
+							class="w-5 h-5 block dark:hidden"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+							></path></svg
+						>
+					</button>
+
+					<a
+						href="#contacto"
+						class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-[12px] sm:text-[13px] font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 border border-purple-200 dark:border-purple-800/50 hover:border-purple-300 dark:hover:border-purple-700/80 bg-purple-50/30 dark:bg-purple-950/10 hover:bg-purple-50 dark:hover:bg-purple-950/30 rounded-xl transition-all duration-200 group"
+					>
+						Cotizar
+						<span
+							class="inline-block transition-transform duration-200 group-hover:translate-x-0.5"
+							>→</span
+						>
+					</a>
+				</div>
+			</nav>
+		</header>
 
 		<main class="relative z-10">
-			
 			<!-- ========================================== -->
-			<!-- 1. HERO SECTION                            -->
+			<!-- 1. HERO SECTION (GSAP Pinning & StoryPixel Layout) -->
 			<!-- ========================================== -->
-			<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-					<div class="space-y-8 max-w-2xl">
-						<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-500/10 border border-purple-100 dark:border-purple-500/20 text-purple-700 dark:text-purple-300 text-xs font-semibold tracking-widest uppercase">
-							<span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-							Diseño • UX • Conversión
-						</div>
-						
-						<h1 class="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-							No es tu producto.<br/>Es <span class="italic text-purple-600 dark:text-purple-400">tu landing.</span>
-						</h1>
-						
-						<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-[50ch]">
-							Diseño páginas y experiencias enfocadas en atraer, conectar y convertir visitantes en clientes para hacer crecer tu negocio.
-						</p>
-						
-						<div class="flex flex-col sm:flex-row gap-4 pt-4">
-							<a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:shadow-[0_0_30px_rgba(147,51,234,0.5)]">
-								Optimizar mi conversión
-								<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-							</a>
+			<section
+				id="hero-scroll-container"
+				class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden z-10"
+			>
+				<!-- Pinned Hero Content -->
+				<div
+					id="hero-content"
+					class="relative z-20 flex flex-col items-center text-center px-4 max-w-7xl -translate-y-16 sm:-translate-y-24 transition-all duration-500"
+				>
+					<!-- Glowing background aura behind massive text -->
+					<div
+						class="absolute -inset-10 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl pointer-events-none -z-10"
+					>
+					</div>
+
+					<div
+						class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-500/10 border border-purple-100 dark:border-purple-500/20 text-purple-700 dark:text-purple-300 text-xs font-semibold tracking-widest uppercase mb-6"
+					>
+						<span
+							class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"
+						></span>
+						HIGH-CONVERSION LANDING PAGES
+					</div>
+
+					<!-- Massive typography H1 serif -->
+					<h1
+						class="font-serif font-extrabold tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.0] select-none text-slate-900 dark:text-white"
+					>
+						No es tu producto.<br class="sm:hidden" /> Es <span
+							class="italic text-purple-600 dark:text-purple-400 font-serif"
+							>tu landing.</span
+						>
+					</h1>
+
+					<!-- Subheadline centrado de ancho controlado para dos lineas -->
+					<p
+						class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 mt-8 max-w-3xl leading-relaxed mx-auto"
+					>
+						Diseño y programo páginas de alta conversión para
+						negocios digitales que buscan escalar. Sin plantillas
+						pesadas, sin código lento. Solo rendimiento puro.
+					</p>
+
+					<!-- CTA Principal -->
+					<div class="mt-8 flex justify-center">
+						<a
+							href="#contacto"
+							class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:shadow-[0_0_30px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 duration-200"
+						>
+							Optimizar mi landing page →
+						</a>
+					</div>
+				</div>
+
+				<!-- Floating Bento-style interface cards -->
+				<div
+					id="floating-cards-container"
+					class="absolute inset-0 z-30 pointer-events-none"
+				>
+					<!-- Card 1: Metrics Glassmorphic Card (Peeks at the bottom on initial load - CRO Open Loop) -->
+					<div
+						class="bento-card-wrapper absolute w-[280px] sm:w-[340px] will-change-transform"
+						style="top: 86%; left: 8%;"
+					>
+						<div
+							class="bento-card glass-card rounded-2xl p-5 shadow-2xl border border-purple-500/20 dark:border-white/10 will-change-transform"
+						>
+							<div class="flex items-center justify-between mb-4">
+								<div class="flex items-center gap-1.5">
+									<div
+										class="w-2.5 h-2.5 rounded-full bg-red-400/80"
+									>
+									</div>
+									<div
+										class="w-2.5 h-2.5 rounded-full bg-yellow-400/80"
+									>
+									</div>
+									<div
+										class="w-2.5 h-2.5 rounded-full bg-green-400/80"
+									>
+									</div>
+								</div>
+								<span
+									class="text-[9px] uppercase font-bold tracking-widest text-purple-600 dark:text-purple-400 font-sans"
+									>Conversión</span
+								>
+							</div>
+							<div class="space-y-3">
+								<div class="flex justify-between items-end">
+									<span class="text-xs text-slate-500 font-sans"
+										>Tasa de conversión</span
+									>
+									<span
+										class="text-2xl font-bold font-mono text-slate-800 dark:text-white leading-none"
+										>+142%</span
+									>
+								</div>
+								<div
+									class="w-full bg-slate-100 dark:bg-slate-800/80 h-2 rounded-full overflow-hidden"
+								>
+									<div
+										class="bg-gradient-to-r from-purple-500 to-fuchsia-500 h-full rounded-full w-[85%]"
+									>
+									</div>
+								</div>
+								<p class="text-[9px] text-slate-500 font-sans">
+									Auditoría UX y optimización de CTAs completada
+								</p>
+							</div>
 						</div>
 					</div>
 
-					<div class="relative h-[400px] md:h-[500px] w-full perspective-1000">
-						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[450px] glass-card rounded-2xl p-6 z-20 shadow-2xl">
-							<div class="flex items-center gap-2 mb-6">
-								<div class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-								<div class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-								<div class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-							</div>
-							<div class="space-y-4">
-								<div class="h-4 w-1/3 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-								<div class="h-4 w-1/2 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-								<div class="mt-8 aspect-video rounded-xl bg-gradient-to-tr from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-800/20 border border-purple-200 dark:border-purple-700/50 flex items-end overflow-hidden p-4">
-									<svg class="w-full h-full text-purple-500 dark:text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]" viewBox="0 0 100 40" preserveAspectRatio="none">
-										<path d="M0 40 L0 30 Q 15 25, 25 35 T 50 20 T 75 10 T 100 5 L100 40 Z" fill="currentColor" fill-opacity="0.2"/>
-										<path d="M0 30 Q 15 25, 25 35 T 50 20 T 75 10 T 100 5" fill="none" stroke="currentColor" stroke-width="2"/>
-										<circle cx="100" cy="5" r="2" fill="currentColor"/>
-									</svg>
+					<!-- Card 2: A/B Test Champion Card -->
+					<div
+						class="bento-card-wrapper absolute w-[260px] sm:w-[320px] will-change-transform"
+						style="top: 108%; right: 6%;"
+					>
+						<div
+							class="bento-card glass-card rounded-2xl p-5 shadow-2xl border border-emerald-500/20 dark:border-white/10 will-change-transform"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<div>
+									<h4
+										class="text-xs font-bold text-slate-800 dark:text-white font-sans"
+									>
+										A/B Test Champion
+									</h4>
+									<p class="text-[9px] text-slate-500 font-sans">
+										Estructura de Hero optimizada
+									</p>
 								</div>
-								<div class="h-10 w-1/3 bg-purple-600 dark:bg-purple-500 rounded-lg mt-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]"></div>
+								<span
+									class="px-2 py-0.5 text-[8px] font-bold bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 rounded-full font-sans"
+									>GANADOR</span
+								>
+							</div>
+							<div class="space-y-3 font-sans">
+								<!-- Option A (Control) -->
+								<div class="space-y-1">
+									<div class="flex justify-between text-[9px] text-slate-500">
+										<span>Versión A (Original)</span>
+										<span class="font-mono">1.8% CR</span>
+									</div>
+									<div class="w-full bg-slate-100 dark:bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
+										<div class="bg-slate-400 dark:bg-slate-600 h-full w-[35%]"></div>
+									</div>
+								</div>
+								<!-- Option B (Guillermo Moreno) -->
+								<div class="space-y-1">
+									<div class="flex justify-between text-[9px] text-slate-800 dark:text-white font-semibold">
+										<span>Versión B (Guillermo)</span>
+										<span class="font-mono text-emerald-500">4.6% CR</span>
+									</div>
+									<div class="w-full bg-slate-100 dark:bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
+										<div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full w-[90%]"></div>
+									</div>
+								</div>
+								<p class="text-[8px] text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-white/5 pt-2 mt-1">
+									Nivel de confianza: 99.9% (Significativo)
+								</p>
 							</div>
 						</div>
-						<div class="absolute top-10 right-0 lg:-right-10 w-64 glass-card rounded-xl p-5 z-10 opacity-80 blur-[1px] transform rotate-3">
-							<div class="flex items-center gap-4">
-								<div class="w-12 h-12 rounded-full border-4 border-purple-200 dark:border-purple-800/50 border-t-purple-500 dark:border-t-purple-400"></div>
-								<div class="space-y-2 flex-1">
-									<div class="h-3 w-full bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-									<div class="h-3 w-2/3 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+					</div>
+
+					<!-- Card 3: Performance Audit Tool Card -->
+					<div
+						class="bento-card-wrapper absolute w-[280px] sm:w-[360px] will-change-transform"
+						style="top: 132%; left: 24%;"
+					>
+						<div
+							class="bento-card glass-card rounded-2xl p-5 shadow-2xl border border-indigo-500/20 dark:border-white/10 will-change-transform"
+						>
+							<div class="flex items-center gap-4 mb-4">
+								<div
+									class="w-12 h-12 rounded-full border-4 border-emerald-500/30 border-t-emerald-500 flex items-center justify-center text-sm font-mono font-bold text-emerald-500"
+								>
+									99
+								</div>
+								<div>
+									<h4
+										class="text-xs font-bold text-slate-800 dark:text-white font-sans"
+									>
+										Performance Score
+									</h4>
+									<p class="text-[9px] text-slate-500 font-sans">
+										Google Lighthouse auditado
+									</p>
+								</div>
+							</div>
+							<div class="grid grid-cols-3 gap-2 font-sans">
+								<div
+									class="bg-slate-100/50 dark:bg-slate-900/50 p-2 rounded-lg text-center border border-slate-200/20 dark:border-white/5"
+								>
+									<span class="block text-[8px] text-slate-400"
+										>FCP</span
+									>
+									<span
+										class="text-xs font-mono font-bold text-slate-700 dark:text-slate-300"
+										>0.4s</span
+									>
+								</div>
+								<div
+									class="bg-slate-100/50 dark:bg-slate-900/50 p-2 rounded-lg text-center border border-slate-200/20 dark:border-white/5"
+								>
+									<span class="block text-[8px] text-slate-400"
+										>LCP</span
+									>
+									<span
+										class="text-xs font-mono font-bold text-slate-700 dark:text-slate-300"
+										>0.8s</span
+									>
+								</div>
+								<div
+									class="bg-slate-100/50 dark:bg-slate-900/50 p-2 rounded-lg text-center border border-slate-200/20 dark:border-white/5"
+								>
+									<span class="block text-[8px] text-slate-400"
+										>CLS</span
+									>
+									<span
+										class="text-xs font-mono font-bold text-slate-700 dark:text-slate-300"
+										>0.01</span
+									>
 								</div>
 							</div>
 						</div>
-						<div class="absolute bottom-10 left-0 lg:-left-10 w-72 glass-card rounded-xl p-5 z-30 opacity-90 transform -rotate-2">
-							<div class="space-y-3">
-								<div class="flex gap-2">
-									<div class="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-500/20"></div>
-									<div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800"></div>
-									<div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800"></div>
+					</div>
+
+					<!-- Card 4: Leads Chart Tracker Card -->
+					<div
+						class="bento-card-wrapper absolute w-[240px] sm:w-[300px] will-change-transform"
+						style="top: 154%; right: 26%;"
+					>
+						<div
+							class="bento-card glass-card rounded-2xl p-5 shadow-2xl border border-purple-500/20 dark:border-white/10 will-change-transform"
+						>
+							<div class="flex justify-between items-center mb-4">
+								<span
+									class="text-xs font-bold text-slate-800 dark:text-white font-sans"
+									>Leads Captados</span
+								>
+								<span
+									class="text-xs font-mono font-bold text-emerald-500"
+									>+84%</span
+								>
+							</div>
+							<div class="h-16 flex items-end gap-1.5 w-full">
+								<div
+									class="bg-purple-100 dark:bg-purple-900/30 h-[30%] w-full rounded-t"
+								>
 								</div>
-								<div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-								<div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+								<div
+									class="bg-purple-100 dark:bg-purple-900/30 h-[45%] w-full rounded-t"
+								>
+								</div>
+								<div
+									class="bg-purple-200 dark:bg-purple-800/30 h-[35%] w-full rounded-t"
+								>
+								</div>
+								<div
+									class="bg-purple-300 dark:bg-purple-700/30 h-[60%] w-full rounded-t"
+								>
+								</div>
+								<div
+									class="bg-purple-400 dark:bg-purple-600/30 h-[50%] w-full rounded-t"
+								>
+								</div>
+								<div
+									class="bg-purple-500 h-[80%] w-full rounded-t shadow-[0_0_10px_rgba(168,85,247,0.4)]"
+								>
+								</div>
+								<div
+									class="bg-fuchsia-500 h-[95%] w-full rounded-t shadow-[0_0_12px_rgba(217,70,239,0.4)]"
+								>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -134,18 +503,34 @@ import '../styles/global.css';
 			<!-- ========================================== -->
 			<!-- 2. PRUEBA SOCIAL / AUTORIDAD               -->
 			<!-- ========================================== -->
-			<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 border-y border-slate-200/50 dark:border-white/5">
+			<section
+				class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 border-y border-slate-200/50 dark:border-white/5"
+			>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-					<div class="flex flex-col items-center md:items-start space-y-2">
-						<span class="font-serif text-5xl md:text-6xl text-slate-900 dark:text-white leading-none">42K+</span>
-						<span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-center md:text-left">
-							Usuarios activos en productos diseñados
+					<div
+						class="flex flex-col items-center md:items-start space-y-2"
+					>
+						<span
+							class="font-serif text-5xl md:text-6xl text-slate-900 dark:text-white leading-none"
+							>42K+</span
+						>
+						<span
+							class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-center md:text-left"
+						>
+							Usuarios activos en landings que diseñé
 						</span>
 					</div>
-					<div class="flex flex-col items-center md:items-start space-y-2">
-						<span class="font-serif text-5xl md:text-6xl text-purple-600 dark:text-purple-400 leading-none">+100%</span>
-						<span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-center md:text-left">
-							De incremento promedio en conversión
+					<div
+						class="flex flex-col items-center md:items-start space-y-2"
+					>
+						<span
+							class="font-serif text-5xl md:text-6xl text-purple-600 dark:text-purple-400 leading-none"
+							>+100%</span
+						>
+						<span
+							class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-center md:text-left"
+						>
+							De incremento promedio en la conversión de mis clientes
 						</span>
 					</div>
 				</div>
@@ -154,37 +539,75 @@ import '../styles/global.css';
 			<!-- ========================================== -->
 			<!-- 3. AGITACIÓN DE LA FRICCIÓN (El Problema)  -->
 			<!-- ========================================== -->
-			<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-				<div class="glass-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center">
+			<section
+				class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32"
+			>
+				<div
+					class="glass-card rounded-3xl p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center"
+				>
 					<div class="md:w-1/2 space-y-6">
-						<span class="text-sm font-bold tracking-widest text-red-500 dark:text-red-400 uppercase">El Problema</span>
+						<span
+							class="text-sm font-bold tracking-widest text-red-500 dark:text-red-400 uppercase"
+							>El Problema</span
+						>
 						<h2 class="font-serif text-4xl leading-tight">
 							El mejor producto del mundo no se vende solo.
 						</h2>
 						<p class="text-lg text-slate-600 dark:text-slate-400">
-							Tener un excelente servicio no sirve de nada si tu sitio web funciona como un muro entre tú y tus clientes. Si te identificas con esto, estás perdiendo dinero:
+							Tener un excelente servicio no sirve de nada si tu
+							sitio web funciona como un muro entre tú y tus
+							clientes. Si te identificas con esto, estás
+							perdiendo dinero:
 						</p>
 					</div>
-					
+
 					<div class="md:w-1/2 w-full">
 						<ul class="space-y-6">
-							{[
-								{ icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z', title: 'Diseño que no comunica valor', text: 'Tus visitantes no entienden qué haces en los primeros 5 segundos y se van a la competencia.' },
-								{ icon: 'M13 17h8m0 0V9m0 8l-8-8-4 4-6-6', title: 'Flujos confusos y CTAs invisibles', text: 'La experiencia es tan compleja que los usuarios abandonan antes de contactarte o comprar.' },
-								{ icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Velocidad de carga lenta', text: 'Tu landing tarda demasiado en cargar por deuda técnica, matando tu SEO y conversiones.' },
-							].map((item) => (
-								<li class="flex gap-4">
-									<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0 text-slate-500 dark:text-slate-400">
-										<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
-										</svg>
-									</div>
-									<div>
-										<h4 class="font-bold text-slate-900 dark:text-white">{item.title}</h4>
-										<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">{item.text}</p>
-									</div>
-								</li>
-							))}
+							{
+								[
+									{
+										icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
+										title: "Diseño que no comunica valor",
+										text: "Tus visitantes no entienden qué haces en los primeros 5 segundos y se van a la competencia.",
+									},
+									{
+										icon: "M13 17h8m0 0V9m0 8l-8-8-4 4-6-6",
+										title: "Flujos confusos y CTAs invisibles",
+										text: "La experiencia es tan compleja que los usuarios abandonan antes de contactarte o comprar.",
+									},
+									{
+										icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+										title: "Velocidad de carga lenta",
+										text: "Tu landing tarda demasiado en cargar por deuda técnica, matando tu SEO y conversiones.",
+									},
+								].map((item) => (
+									<li class="flex gap-4">
+										<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0 text-slate-500 dark:text-slate-400">
+											<svg
+												class="w-5 h-5"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="2"
+													d={item.icon}
+												/>
+											</svg>
+										</div>
+										<div>
+											<h4 class="font-bold text-slate-900 dark:text-white">
+												{item.title}
+											</h4>
+											<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+												{item.text}
+											</p>
+										</div>
+									</li>
+								))
+							}
 						</ul>
 					</div>
 				</div>
@@ -193,161 +616,406 @@ import '../styles/global.css';
 			<!-- ========================================== -->
 			<!-- 4. OFERTA CORE (Servicios Estandarizados)  -->
 			<!-- ========================================== -->
-			<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+			<section
+				id="servicios"
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-mt-20"
+			>
 				<div class="text-center space-y-4 mb-16">
-					<span class="text-sm font-bold tracking-widest text-purple-600 dark:text-purple-400 uppercase">Soluciones</span>
+					<span
+						class="text-sm font-bold tracking-widest text-purple-600 dark:text-purple-400 uppercase"
+						>Soluciones</span
+					>
 					<h2 class="font-serif text-4xl md:text-5xl leading-tight">
-						Diseño estratégico para<br/>negocios que quieren <span class="italic text-purple-600 dark:text-purple-400">crecer.</span>
+						Diseño y desarrollo con un único objetivo:<br />multiplicar <span
+							class="italic text-purple-600 dark:text-purple-400 font-serif"
+							>tu conversión.</span
+						>
 					</h2>
 				</div>
 
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-					
 					<!-- Card 1 -->
-					<div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group">
-						<div class="absolute top-0 right-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all"></div>
-						
+					<div
+						class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group"
+					>
+						<div
+							class="absolute top-0 right-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all"
+						>
+						</div>
+
 						<div class="relative z-10 flex flex-col h-full">
-							<div class="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+							<div
+								class="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+									></path></svg
+								>
 							</div>
-							
+
 							<div class="space-y-4 flex-grow">
-								<h3 class="font-serif text-2xl md:text-3xl">Auditoría UX y <span class="italic">Conversión.</span></h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm">Detectamos fricción, problemas y oportunidades para mejorar la experiencia inmediatamente.</p>
-								
-								<ul class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Análisis heurístico profundo
+								<h3 class="font-serif text-2xl md:text-3xl">
+									Auditoría UX y <span class="italic font-serif"
+										>Conversión.</span
+									>
+								</h3>
+								<p
+									class="text-slate-600 dark:text-slate-400 text-sm"
+								>
+									Analizo tu landing, detecto los puntos de fuga de dinero y te doy un plan de acción inmediato.
+								</p>
+
+								<ul
+									class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5"
+								>
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Mi análisis heurístico profundo de tu interfaz
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Identificación de fugas
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Identificación exacta de dónde estás perdiendo dinero
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Recomendaciones accionables
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-purple-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Recomendaciones técnicas y de copy 100% accionables
 									</li>
 								</ul>
 							</div>
-							
-							<div class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10">
-								<a href="#contacto" class="flex justify-center items-center w-full px-6 py-3 border border-purple-200 dark:border-purple-700/50 text-purple-600 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-colors font-medium">
-									Solicitar auditoría
+
+							<div
+								class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10"
+							>
+								<a
+									href="#contacto"
+									class="flex justify-center items-center w-full px-6 py-3 border border-purple-200 dark:border-purple-700/50 text-purple-600 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-colors font-medium group"
+								>
+									Quiero mi auditoría UX <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5 ml-1">→</span>
 								</a>
 							</div>
 						</div>
 					</div>
 
 					<!-- Card 2 -->
-					<div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group">
-						<div class="absolute top-0 right-0 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-3xl group-hover:bg-fuchsia-500/20 transition-all"></div>
-						
+					<div
+						class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group"
+					>
+						<div
+							class="absolute top-0 right-0 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-3xl group-hover:bg-fuchsia-500/20 transition-all"
+						>
+						</div>
+
 						<div class="relative z-10 flex flex-col h-full">
-							<div class="w-12 h-12 rounded-2xl bg-fuchsia-50 dark:bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 dark:text-fuchsia-400 mb-6">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+							<div
+								class="w-12 h-12 rounded-2xl bg-fuchsia-50 dark:bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 dark:text-fuchsia-400 mb-6"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+									></path></svg
+								>
 							</div>
-							
+
 							<div class="space-y-4 flex-grow">
-								<h3 class="font-serif text-2xl md:text-3xl">Landing Pages <span class="italic">que convierten.</span></h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm">Páginas de alta conversión con diseño claro, persuasivo y adaptadas a móvil.</p>
-								
-								<ul class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Estrategia de conversión
+								<h3 class="font-serif text-2xl md:text-3xl">
+									Landing Pages <span class="italic font-serif"
+										>que convierten.</span
+									>
+								</h3>
+								<p
+									class="text-slate-600 dark:text-slate-400 text-sm"
+								>
+									Diseño y programo tu landing page a medida, optimizada de punta a punta para convertir visitas en ventas.
+								</p>
+
+								<ul
+									class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5"
+								>
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Mi estrategia exclusiva de conversión para tu nicho
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Diseño de alto contraste
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Diseño premium enfocado en guiar el clic de tu usuario
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Optimización de velocidad
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-fuchsia-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Código ultra-rápido para que nadie se vaya antes de cargar
 									</li>
 								</ul>
 							</div>
-							
-							<div class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10">
-								<a href="#contacto" class="flex justify-center items-center w-full px-6 py-3 border border-fuchsia-200 dark:border-fuchsia-700/50 text-fuchsia-600 dark:text-fuchsia-300 hover:bg-fuchsia-50 dark:hover:bg-fuchsia-900/20 rounded-xl transition-colors font-medium">
-									Cotizar landing page
+
+							<div
+								class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10"
+							>
+								<a
+									href="#contacto"
+									class="flex justify-center items-center w-full px-6 py-3 border border-fuchsia-200 dark:border-fuchsia-700/50 text-fuchsia-600 dark:text-fuchsia-300 hover:bg-fuchsia-50 dark:hover:bg-fuchsia-900/20 rounded-xl transition-colors font-medium group"
+								>
+									Iniciar mi proyecto <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5 ml-1">→</span>
 								</a>
 							</div>
 						</div>
 					</div>
 
 					<!-- Card 3 -->
-					<div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group">
-						<div class="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all"></div>
-						
+					<div
+						class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group"
+					>
+						<div
+							class="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all"
+						>
+						</div>
+
 						<div class="relative z-10 flex flex-col h-full">
-							<div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+							<div
+								class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M13 10V3L4 14h7v7l9-11h-7z"
+									></path></svg
+								>
 							</div>
-							
+
 							<div class="space-y-4 flex-grow">
-								<h3 class="font-serif text-2xl md:text-3xl">Sistemas de <span class="italic">Automatización.</span></h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm">Automatizo procesos comerciales para que ahorres tiempo, escales y vendas más.</p>
-								
-								<ul class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Integración con CRMs
+								<h3 class="font-serif text-2xl md:text-3xl">
+									Sistemas de <span class="italic font-serif"
+										>Automatización.</span
+									>
+								</h3>
+								<p
+									class="text-slate-600 dark:text-slate-400 text-sm"
+								>
+									Automatizo procesos comerciales para que ahorres tiempo, escales y vendas más.
+								</p>
+
+								<ul
+									class="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5"
+								>
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Conexión directa de tus leads con tu CRM favorito
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Secuencias de email
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Programación de tus secuencias automáticas de venta
 									</li>
-									<li class="flex text-sm text-slate-700 dark:text-slate-300">
-										<svg class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-										Automatización de WhatsApp
+									<li
+										class="flex text-sm text-slate-700 dark:text-slate-300"
+									>
+										<svg
+											class="w-4 h-4 text-indigo-500 mr-2 shrink-0 mt-0.5"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											><path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7"></path></svg
+										>
+										Automatización inteligente para cerrar clientes por chat
 									</li>
 								</ul>
 							</div>
-							
-							<div class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10">
-								<a href="#contacto" class="flex justify-center items-center w-full px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_15px_rgba(147,51,234,0.3)] font-medium">
-									Solicitar sistema
+
+							<div
+								class="pt-8 mt-8 border-t border-slate-200 dark:border-white/10"
+							>
+								<a
+									href="#contacto"
+									class="flex justify-center items-center w-full px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_15px_rgba(147,51,234,0.3)] font-medium group"
+								>
+									Automatizar mi negocio <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5 ml-1">→</span>
 								</a>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</section>
 
 			<!-- ========================================== -->
 			<!-- 5. ROADMAP DEL PROCESO                     -->
 			<!-- ========================================== -->
-			<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+			<section
+				id="proceso"
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 scroll-mt-20"
+			>
 				<div class="text-center space-y-4 mb-16">
 					<h2 class="font-serif text-4xl md:text-5xl leading-tight">
-						Cómo funciona el <span class="italic text-purple-600 dark:text-purple-400">proceso.</span>
+						Mi método de trabajo en <span
+							class="italic text-purple-600 dark:text-purple-400 font-serif"
+							>3 pasos claros.</span
+						>
 					</h2>
-					<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-						Un flujo lineal y transparente. Sin incertidumbre, diseñado para velocidad y precisión.
+					<p
+						class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+					>
+						Sin intermediarios, sin sorpresas y con comunicación directa de especialista a especialista.
 					</p>
 				</div>
 
 				<div class="relative max-w-4xl mx-auto">
 					<!-- Línea conectora -->
-					<div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"></div>
+					<div
+						class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"
+					>
+					</div>
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-						{[
-							{ num: '01', title: 'Descubrimiento', text: 'Analizamos tus objetivos, tu dolor actual y trazamos un plan de acción claro.' },
-							{ num: '02', title: 'Diseño y Estrategia', text: 'Creamos prototipos de alta fidelidad enfocados puramente en UX y conversión.' },
-							{ num: '03', title: 'Desarrollo y Lanzamiento', text: 'Programación limpia, integración de sistemas y lanzamiento al mercado.' },
-						].map((step, index) => (
-							<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
-								<div class="w-12 h-12 rounded-full bg-purple-600 dark:bg-purple-500 text-white flex items-center justify-center font-bold text-lg mb-6 ring-4 ring-slate-50 dark:ring-slate-900 shadow-xl">
-									{step.num}
+					<div
+						class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10"
+					>
+						{
+							[
+								{
+									num: "01",
+									title: "Descubrimiento",
+									text: "Analizo tu modelo de negocio, entiendo tu cuello de botella y trazo tu hoja de ruta personalizada.",
+								},
+								{
+									num: "02",
+									title: "Diseño y Estrategia",
+									text: "Diseño tu interfaz en alta fidelidad y estructuro el copy enfocado al 100% en persuadir a tu cliente.",
+								},
+								{
+									num: "03",
+									title: "Desarrollo y Lanzamiento",
+									text: "Programo tu landing con código limpio de máxima velocidad, integro tus herramientas y la lanzo con éxito.",
+								},
+							].map((step, index) => (
+								<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+									<div class="w-12 h-12 rounded-full bg-purple-600 dark:bg-purple-500 text-white flex items-center justify-center font-bold text-lg mb-6 ring-4 ring-slate-50 dark:ring-slate-900 shadow-xl">
+										{step.num}
+									</div>
+									<h4 class="font-bold text-slate-900 dark:text-white mb-2">
+										{step.title}
+									</h4>
+									<p class="text-sm text-slate-600 dark:text-slate-400">
+										{step.text}
+									</p>
 								</div>
-								<h4 class="font-bold text-slate-900 dark:text-white mb-2">{step.title}</h4>
-								<p class="text-sm text-slate-600 dark:text-slate-400">{step.text}</p>
-							</div>
-						))}
+							))
+						}
 					</div>
 				</div>
 			</section>
@@ -355,47 +1023,113 @@ import '../styles/global.css';
 			<!-- ========================================== -->
 			<!-- 6. FORMULARIO DE CONVERSIÓN FINALES        -->
 			<!-- ========================================== -->
-			<section id="contacto" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mb-24">
-				<div class="glass-card rounded-3xl overflow-hidden p-8 md:p-12 border-purple-200 dark:border-purple-500/30">
+			<section
+				id="contacto"
+				class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mb-24 scroll-mt-20"
+			>
+				<div
+					class="glass-card rounded-3xl overflow-hidden p-8 md:p-12 border-purple-200 dark:border-purple-500/30"
+				>
 					<div class="text-center space-y-4 mb-10">
-						<h2 class="font-serif text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight">¿Listo para escalar tu negocio?</h2>
-						<p class="text-base text-slate-600 dark:text-slate-400">Completa los datos y recibirás una respuesta directa en menos de 24 horas.</p>
+						<h2
+							class="font-serif text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight"
+						>
+							¿Listo para multiplicar las ventas de tu negocio?
+						</h2>
+						<p class="text-base text-slate-600 dark:text-slate-400">
+							Cuéntame qué vendes y te enviaré una propuesta personalizada en menos de 24 horas. Directo a mi bandeja.
+						</p>
 					</div>
-		  
+
 					<form class="space-y-6 max-w-2xl mx-auto">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<!-- Alta proximidad en etiquetas -->
 							<div class="space-y-1.5">
-								<label for="nombre" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Nombre completo</label>
-								<input type="text" id="nombre" name="nombre" class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white" placeholder="Ej. Ana García" required>
+								<label
+									for="nombre"
+									class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+									>Nombre completo</label
+								>
+								<input
+									type="text"
+									id="nombre"
+									name="nombre"
+									class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white"
+									placeholder="Ej. Ana García"
+									required
+								/>
 							</div>
-			
+
 							<div class="space-y-1.5">
-								<label for="correo" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Correo de trabajo</label>
-								<input type="email" id="correo" name="correo" class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white" placeholder="ana@empresa.com" required>
+								<label
+									for="correo"
+									class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+									>Correo de trabajo</label
+								>
+								<input
+									type="email"
+									id="correo"
+									name="correo"
+									class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white"
+									placeholder="ana@empresa.com"
+									required
+								/>
 							</div>
 						</div>
-		  
+
 						<div class="space-y-1.5">
-							<label for="objetivo" class="block text-sm font-medium text-slate-700 dark:text-slate-300">¿Qué necesitas resolver?</label>
+							<label
+								for="objetivo"
+								class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+								>¿Qué necesitas resolver?</label
+							>
 							<div class="relative">
-								<select id="objetivo" name="objetivo" class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white" required>
-									<option value="" disabled selected>Selecciona un servicio...</option>
-									<option value="auditoria">Auditoría UX y Conversión</option>
-									<option value="landing">Landing Page de Alta Conversión</option>
-									<option value="sitio">Sitio Web para Negocios</option>
-									<option value="sistema">Sistema Completo de Captación</option>
+								<select
+									id="objetivo"
+									name="objetivo"
+									class="w-full px-4 py-3 text-base bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/10 rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200 text-slate-900 dark:text-white"
+									required
+								>
+									<option value="" disabled selected
+										>Selecciona un servicio...</option
+									>
+									<option value="auditoria"
+										>Auditoría UX y Conversión</option
+									>
+									<option value="landing"
+										>Landing Page de Alta Conversión</option
+									>
+									<option value="sitio"
+										>Sitio Web Premium para tu Marca</option
+									>
+									<option value="sistema"
+										>Mi Sistema Completo de Captación de Clientes</option
+									>
 								</select>
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-									<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+								<div
+									class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500"
+								>
+									<svg
+										class="h-5 w-5"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M19 9l-7 7-7-7"></path>
 									</svg>
 								</div>
 							</div>
 						</div>
-		  
-						<button type="submit" class="w-full inline-flex items-center justify-center px-6 py-4 text-base font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:shadow-[0_0_30px_rgba(147,51,234,0.5)] mt-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900">
-							Enviar solicitud
+
+						<button
+							type="submit"
+							class="w-full inline-flex items-center justify-center px-6 py-4 text-base font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:shadow-[0_0_30px_rgba(147,51,234,0.5)] mt-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+						>
+							Quiero multiplicar mi conversión →
 						</button>
 					</form>
 				</div>
@@ -404,49 +1138,187 @@ import '../styles/global.css';
 			<!-- ========================================== -->
 			<!-- 7. ABOUT & FOOTER                          -->
 			<!-- ========================================== -->
-			<footer class="border-t border-slate-200 dark:border-white/5 bg-slate-100/50 dark:bg-slate-900/30">
+			<footer
+				class="border-t border-slate-200 dark:border-white/5 bg-slate-100/50 dark:bg-slate-900/30"
+			>
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-						
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+					>
 						<!-- About Section -->
 						<div class="flex items-center gap-6">
-							<div class="w-24 h-24 rounded-full overflow-hidden border-2 border-purple-200 dark:border-purple-800 shrink-0 shadow-lg">
-								<img src="/guillermo.PNG" alt="Guillermo Moreno" class="w-full h-full object-cover" />
+							<div
+								class="w-24 h-24 rounded-full overflow-hidden border-2 border-purple-200 dark:border-purple-800 shrink-0 shadow-lg"
+							>
+								<img
+									src="/guillermo.PNG"
+									alt="Guillermo Moreno"
+									class="w-full h-full object-cover"
+								/>
 							</div>
 							<div class="space-y-2">
-								<h3 class="font-serif text-xl dark:text-white">Guillermo Moreno</h3>
-								<p class="text-sm text-slate-600 dark:text-slate-400 max-w-[30ch]">
-									Diseñador y desarrollador enfocado en convertir la complejidad en infraestructura digital altamente rentable.
+								<h3 class="font-serif text-xl dark:text-white">
+									Guillermo Moreno
+								</h3>
+								<p
+									class="text-sm text-slate-600 dark:text-slate-400 max-w-[30ch]"
+								>
+									Diseñador y desarrollador enfocado en
+									convertir la complejidad en infraestructura
+									digital altamente rentable.
 								</p>
 							</div>
 						</div>
 
 						<!-- Links / Copyright -->
 						<div class="flex flex-col md:items-end space-y-4">
-							<div class="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
-								<a href="#" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Servicios</a>
-								<a href="#contacto" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Contacto</a>
-								<a href="#" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">LinkedIn</a>
+							<div
+								class="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400"
+							>
+								<a
+									href="#"
+									class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+									>Servicios</a
+								>
+								<a
+									href="#contacto"
+									class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+									>Contacto</a
+								>
+								<a
+									href="#"
+									class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+									>LinkedIn</a
+								>
 							</div>
 							<p class="text-xs text-slate-500">
-								&copy; {new Date().getFullYear()} Guillermo Moreno. Todos los derechos reservados.
+								&copy; {new Date().getFullYear()} Guillermo Moreno.
+								Todos los derechos reservados.
 							</p>
 						</div>
-
 					</div>
 				</div>
 			</footer>
-
 		</main>
 
 		<script is:inline>
 			// Theme Toggle Logic
-			const themeToggleBtn = document.getElementById('themeToggle');
-			
-			themeToggleBtn.addEventListener('click', () => {
-				const isDark = document.documentElement.classList.toggle('dark');
-				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			const themeToggleBtn = document.getElementById("themeToggle");
+
+			themeToggleBtn.addEventListener("click", () => {
+				const isDark =
+					document.documentElement.classList.toggle("dark");
+				localStorage.setItem("theme", isDark ? "dark" : "light");
 			});
+		</script>
+
+		<!-- Interactive GSAP & Full-screen Overlay Script -->
+		<script>
+			import { gsap } from "gsap";
+			import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+			gsap.registerPlugin(ScrollTrigger);
+
+			// 1. Full-screen Overlay Menu Logic
+			const menuToggle = document.getElementById("menuToggle");
+			const overlayMenu = document.getElementById("overlayMenu");
+			const menuLine1 = document.getElementById("menuLine1");
+			const menuLine2 = document.getElementById("menuLine2");
+			let isOpen = false;
+
+			function toggleMenu() {
+				isOpen = !isOpen;
+				if (isOpen) {
+					overlayMenu.classList.remove("translate-y-[-100%]");
+					overlayMenu.classList.add("translate-y-0");
+					menuLine1.classList.add("rotate-45", "translate-y-[4px]");
+					menuLine2.classList.add("-rotate-45", "-translate-y-[4px]");
+					document.body.style.overflow = "hidden";
+				} else {
+					overlayMenu.classList.remove("translate-y-0");
+					overlayMenu.classList.add("translate-y-[-100%]");
+					menuLine1.classList.remove(
+						"rotate-45",
+						"translate-y-[4px]",
+					);
+					menuLine2.classList.remove(
+						"-rotate-45",
+						"-translate-y-[4px]",
+					);
+					document.body.style.overflow = "";
+				}
+			}
+
+			if (menuToggle && overlayMenu && menuLine1 && menuLine2) {
+				menuToggle.addEventListener("click", toggleMenu);
+
+				const menuLinks = document.querySelectorAll(".menu-link");
+				menuLinks.forEach((link) => {
+					link.addEventListener("click", () => {
+						if (isOpen) toggleMenu();
+					});
+				});
+			}
+
+			// 2. GSAP Pinning & Parallax Bento Cards Anim
+			const heroScrollContainer = document.getElementById(
+				"hero-scroll-container",
+			);
+			if (heroScrollContainer) {
+				const tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#hero-scroll-container",
+						start: "top top",
+						end: "+=180%", // Pinned scroll length
+						pin: true,
+						scrub: 1.5, // 1.5s fluid deceleration momentum drift
+					},
+				});
+
+				// Bento Card Wrappers parallax floats upward from bottom
+				tl.to(
+					".bento-card-wrapper",
+					{
+						y: (index) => {
+							const speeds = [-800, -1100, -1400, -1700];
+							return speeds[index];
+						},
+						rotate: (index) => {
+							const rotations = [-6, 5, -5, 6];
+							return rotations[index];
+						},
+						stagger: 0.05,
+						ease: "power1.out", // Decelerates softly
+					},
+					0,
+				);
+
+				// Subtle fading and scale out of H1 content as cards overlay
+				tl.to(
+					"#hero-content",
+					{
+						opacity: 0.15,
+						scale: 0.94,
+						filter: "blur(5px)",
+						ease: "none",
+					},
+					0.25,
+				);
+
+				// 3. Infinite Gentle Organic Floating/Breathing Animation
+				gsap.utils.toArray(".bento-card").forEach((card, index) => {
+					gsap.to(card, {
+						y: "random(-12, 12)", // Slow vertical sway
+						x: "random(-6, 6)",   // Slow horizontal sway
+						rotate: "random(-2, 2)", // Soft angle sway
+						duration: "random(4.5, 6)", // Randomized asymmetric cycle
+						repeat: -1,
+						yoyo: true,
+						ease: "sine.inOut",
+						delay: index * 0.35, // Natural entry delay
+					});
+				});
+			}
 		</script>
 	</body>
 </html>
