@@ -801,7 +801,7 @@ import Analytics from "@vercel/analytics/astro";
 
 					<!-- Card 2 -->
 					<div
-						class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group"
+						class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col relative overflow-hidden group ring-1 ring-purple-500/30 dark:ring-purple-400/30 shadow-[0_0_30px_rgba(168,85,247,0.15)]"
 					>
 						<div
 							class="absolute top-0 right-0 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-3xl group-hover:bg-fuchsia-500/20 transition-all"
@@ -903,7 +903,7 @@ import Analytics from "@vercel/analytics/astro";
 							>
 								<a
 									href="#contacto"
-									class="flex justify-center items-center w-full px-6 py-3 border border-fuchsia-200 dark:border-fuchsia-700/50 text-fuchsia-600 dark:text-fuchsia-300 hover:bg-fuchsia-50 dark:hover:bg-fuchsia-900/20 rounded-xl transition-colors font-medium group"
+									class="flex justify-center items-center w-full px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_15px_rgba(147,51,234,0.3)] font-medium group"
 								>
 									Iniciar mi proyecto <span
 										class="inline-block transition-transform duration-200 group-hover:translate-x-0.5 ml-1"
@@ -1015,7 +1015,7 @@ import Analytics from "@vercel/analytics/astro";
 							>
 								<a
 									href="#contacto"
-									class="flex justify-center items-center w-full px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_15px_rgba(147,51,234,0.3)] font-medium group"
+									class="flex justify-center items-center w-full px-6 py-3 border border-indigo-200 dark:border-indigo-700/50 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors font-medium group"
 								>
 									Automatizar mi negocio <span
 										class="inline-block transition-transform duration-200 group-hover:translate-x-0.5 ml-1"
@@ -1051,9 +1051,15 @@ import Analytics from "@vercel/analytics/astro";
 				</div>
 
 				<div class="relative max-w-4xl mx-auto">
-					<!-- Línea conectora -->
+					<!-- Línea conectora vertical (mobile/tablet) -->
 					<div
-						class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"
+						class="absolute left-1/2 top-[24px] bottom-[24px] w-0.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 z-0 md:hidden"
+					>
+					</div>
+
+					<!-- Línea conectora horizontal (desktop) -->
+					<div
+						class="hidden md:block absolute top-[56px] left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"
 					>
 					</div>
 
@@ -1078,14 +1084,14 @@ import Analytics from "@vercel/analytics/astro";
 									text: "Programo tu landing con código limpio de máxima velocidad, integro tus herramientas y la lanzo con éxito.",
 								},
 							].map((step, index) => (
-								<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
-									<div class="w-12 h-12 rounded-full bg-purple-600 dark:bg-purple-500 text-white flex items-center justify-center font-bold text-lg mb-6 ring-4 ring-slate-50 dark:ring-slate-900 shadow-xl">
+								<div class="group relative flex flex-col items-center text-center p-8 glass-card rounded-2xl transition-all duration-300 ease-in-out hover:border-purple-500/30 dark:hover:border-purple-500/30 hover:shadow-[0_15px_30px_rgba(168,85,247,0.08)] dark:hover:shadow-[0_15px_30px_rgba(168,85,247,0.04)]">
+									<div class="w-12 h-12 rounded-full bg-purple-600 dark:bg-purple-500 text-white flex items-center justify-center font-bold text-lg mb-6 ring-4 ring-slate-50 dark:ring-slate-950 shadow-xl transition-transform duration-300 group-hover:scale-105 relative z-10">
 										{step.num}
 									</div>
-									<h4 class="font-bold text-slate-900 dark:text-white mb-2">
+									<h4 class="font-bold text-slate-900 dark:text-white mb-2 relative z-10">
 										{step.title}
 									</h4>
-									<p class="text-sm text-slate-600 dark:text-slate-400">
+									<p class="text-sm text-slate-600 dark:text-slate-400 relative z-10 max-w-sm">
 										{step.text}
 									</p>
 								</div>
