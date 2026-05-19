@@ -788,6 +788,7 @@ import Analytics from "@vercel/analytics/astro";
 							>
 								<a
 									href="#contacto"
+									data-service="auditoria"
 									class="flex justify-center items-center w-full px-6 py-3 border border-purple-200 dark:border-purple-700/50 text-purple-600 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-colors font-medium group"
 								>
 									Quiero mi auditoría UX <span
@@ -903,6 +904,7 @@ import Analytics from "@vercel/analytics/astro";
 							>
 								<a
 									href="#contacto"
+									data-service="landing"
 									class="flex justify-center items-center w-full px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 rounded-xl transition-all shadow-[0_0_15px_rgba(147,51,234,0.3)] font-medium group"
 								>
 									Iniciar mi proyecto <span
@@ -1015,6 +1017,7 @@ import Analytics from "@vercel/analytics/astro";
 							>
 								<a
 									href="#contacto"
+									data-service="sistema"
 									class="flex justify-center items-center w-full px-6 py-3 border border-indigo-200 dark:border-indigo-700/50 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors font-medium group"
 								>
 									Automatizar mi negocio <span
@@ -1098,6 +1101,76 @@ import Analytics from "@vercel/analytics/astro";
 							))
 						}
 					</div>
+				</div>
+			</section>
+
+			<!-- ========================================== -->
+			<!-- 5b. TESTIMONIOS (REVIEWS)                  -->
+			<!-- ========================================== -->
+			<section
+				id="testimonios"
+				class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 scroll-mt-20 border-t border-slate-200 dark:border-white/5"
+			>
+				<div class="text-center space-y-4 mb-16">
+					<h2 class="font-serif text-4xl md:text-5xl leading-tight">
+						La experiencia de <span
+							class="italic text-purple-600 dark:text-purple-400 font-serif"
+							>trabajar conmigo.</span
+						>
+					</h2>
+					<p
+						class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+					>
+						Lo que dicen los fundadores y equipos de marketing que
+						han transformado sus landings en activos de alto
+						rendimiento.
+					</p>
+				</div>
+
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+				>
+					{
+						[
+							{
+								text: "«Guillermo nos apoyó con el rediseño del sitio web de Ecovis con un enfoque estratégico y muy profesional. Su visión y capacidad técnica nos permitieron transformar la plataforma en un sitio funcional con mejor experiencia de usuario, optimizando el SEO y fortaleciendo el posicionamiento digital de la marca en el sector industrial. Lo más importante: hemos notado un aumento real en la llegada de prospectos cualificados. Recomendamos ampliamente su trabajo.»",
+								name: "Estefanía G",
+								role: "Ecovis México",
+								initials: "EG",
+							},
+							{
+								text: "«Guillermo diseñó la landing page para nuestro desarrollo inmobiliario SG Cities de forma magistral. Logró estructurar una oferta compleja de preventa y construcción en una experiencia interactiva y fluida que multiplicó la llegada de leads altamente calificados. Su dominio técnico y su enfoque en conversión marcaron la diferencia.»",
+								name: "Enrique La Cruz",
+								role: "Socio Fundador en SG Cities",
+								initials: "EL",
+							},
+						].map((review) => (
+							<div class="group relative flex flex-col justify-between p-8 md:p-10 glass-card rounded-2xl transition-all duration-300 ease-in-out hover:border-purple-500/30 dark:hover:border-purple-500/30 hover:shadow-[0_15px_30px_rgba(168,85,247,0.08)] dark:hover:shadow-[0_15px_30px_rgba(168,85,247,0.04)]">
+								<div class="space-y-6">
+									<span class="block text-4xl text-purple-400/30 dark:text-purple-500/20 font-serif leading-none select-none">
+										“
+									</span>
+									<p class="font-sans text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed italic">
+										{review.text}
+									</p>
+								</div>
+
+								<div class="flex items-center space-x-4 pt-8 mt-8 border-t border-slate-200 dark:border-white/5">
+									<div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-500 dark:from-purple-500 dark:to-fuchsia-400 text-white flex items-center justify-center font-sans font-bold text-base shadow-md select-none shrink-0">
+										{review.initials}
+									</div>
+									<div class="flex flex-col">
+										<span class="font-sans font-bold text-slate-900 dark:text-white text-base">
+											{review.name}
+										</span>
+										<span class="font-sans text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+											{review.role}
+										</span>
+									</div>
+								</div>
+							</div>
+						))
+					}
 				</div>
 			</section>
 
@@ -1403,6 +1476,18 @@ import Analytics from "@vercel/analytics/astro";
 					});
 				});
 			}
+
+			// 4. Form Context Handler: select corresponding service option in dropdown on CTA click
+			const serviceLinks = document.querySelectorAll("[data-service]");
+			serviceLinks.forEach((link) => {
+				link.addEventListener("click", () => {
+					const serviceVal = link.getAttribute("data-service");
+					const selectElement = document.getElementById("objetivo");
+					if (selectElement && serviceVal) {
+						selectElement.value = serviceVal;
+					}
+				});
+			});
 		</script>
 		<Analytics />
 	</body>
