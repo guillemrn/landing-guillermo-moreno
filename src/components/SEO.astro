@@ -1,0 +1,64 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+  title = "Guillermo Moreno | Diseño y Desarrollo de Landings de Alta Conversión",
+  description = "Diseño y programo landing pages ultra-rápidas en Astro para startups y negocios. Optimiza tu conversión y elimina el código lento. Agenda una sesión.",
+  image = "/og-image.jpg",
+  url = "https://start.guillermoml.com",
+} = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Guillermo Moreno Lopez",
+  "url": url,
+  "image": new URL(image, url).href,
+  "description": "Diseñador y programador Front-End especializado en Conversion Rate Optimization (CRO), diseño de interfaces premium a gran escala y desarrollo web ultra-rápido.",
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 0,
+      "longitude": 0
+    },
+    "geoRadius": "Global / Remote"
+  },
+  "knowsAbout": [
+    "Web Design",
+    "Front-End Development",
+    "Conversion Rate Optimization (CRO)",
+    "Astro",
+    "Tailwind CSS"
+  ]
+};
+---
+
+<!-- Básico y Semántica -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, url)} />
+
+<!-- JSON-LD Datos Estructurados -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
